@@ -3,6 +3,7 @@
 ## Models
 
 - Users
+
 |Column|Data|
 |--|--|
 |id|integer|
@@ -12,6 +13,7 @@
 |email|strings|
 
 - Tasks
+
 |Column|Data|
 |--|--|
 |id|integer|
@@ -24,6 +26,7 @@
 |priority|integer|
 
 - Labels
+
 |Column|Data|
 |--|--|
 |id|integer|
