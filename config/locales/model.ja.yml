@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      task: "タスク"
+      user: "ユーザ"
+      label: "ラベル"
+    attributes:
+      task:
+        name: "タスク名"
+        detail: "タスク詳細"
+        status: "ステータス"
+        priority: "優先度"
+        starttime: "開始時間"
+        endtime: "終了時間"
+      user:
+        username: "ユーザ名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        name: "名前"
+      label:
+        name: "ラベル名"
