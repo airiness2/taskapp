@@ -1,0 +1,8 @@
+ja:
+  view:
+    task: "タスク"
+    index: "一覧"
+    detail: "詳細"
+    taskname: "タスク名"
+    create: "新規作成"
+    edit: "編集"
