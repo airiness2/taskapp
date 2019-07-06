@@ -42,10 +42,13 @@
 
 ## Deploying
 
-- ディレクトリ配下のファイルをコミット対象にする
-    git add -A
-- コミットする
-    git commit -m 'コメント'
-- githubにデプロイ
-    git push origin master
+- ディレクトリ配下のファイルをコミット対象にする  
+git add -A  
+
+- コミットする  
+git commit -m 'コメント'  
+
+- githubにデプロイ  
+git push origin master  
+
 - github連携により、自動的にherokuにもデプロイされる
