@@ -7,6 +7,7 @@
     <tr>
       <th><%= t('view.taskname') %></th>
       <th><%= t('view.taskdetail') %></th>
+      <th><%= t('view.endtime') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= task.name %></td>
         <td><%= task.detail %></td>
+        <td><%= task.endtime %></td>
         <td><%= link_to '詳細', task %></td>
         <td><%= link_to '編集', edit_task_path(task) %></td>
         <td><%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +28,6 @@
 
 <br>
 
+<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+<br>
 <%= link_to 'タスク新規作成', new_task_path %>

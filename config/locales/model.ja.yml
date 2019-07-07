@@ -11,7 +11,7 @@ ja:
         status: "ステータス"
         priority: "優先度"
         starttime: "開始時間"
-        endtime: "終了時間"
+        endtime: "終了期限"
       user:
         username: "ユーザ名"
         email: "メールアドレス"
