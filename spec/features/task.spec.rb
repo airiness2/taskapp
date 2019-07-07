@@ -57,7 +57,17 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     fill_in 'task_name', with: 'test_task_05'
     fill_in 'task_detail', with: 'task_detail_05'
-#    select '2020-10-06', :from => 'task_endtime'
+    select '2020', :from => 'task_endtime_1i'
+    select '10', :from => 'task_endtime_2i'
+    select '6', :from => 'task_endtime_3i'
+    select '12', :from => 'task_endtime_4i'
+    select '00', :from => 'task_endtime_5i'
+    #fill_in 'task_endtime_1i', with: '2020'
+    #fill_in 'task_endtime_2i', with: '10'
+    #fill_in 'task_endtime_3i', with: '06'
+    #fill_in 'task_endtime_4i', with: '10'
+    #fill_in 'task_endtime_5i', with: '00'
+
     click_on '登録する'
 
     click_on '終了期限でソートする'
