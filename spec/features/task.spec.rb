@@ -48,7 +48,7 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
     visit tasks_path
 
-    expect(page).to have_text 'test_task_02 samplesample 2015/12/06 12:00 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 12:00 詳細 編集 削除'
+    expect(page).to have_text 'test_task_02 samplesample 2015/12/06 12:00 未着手 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 12:00 未着手 詳細 編集 削除'
   end
 
 
@@ -62,17 +62,12 @@ RSpec.feature "タスク管理機能", type: :feature do
     select '6', :from => 'task_endtime_3i'
     select '12', :from => 'task_endtime_4i'
     select '00', :from => 'task_endtime_5i'
-    #fill_in 'task_endtime_1i', with: '2020'
-    #fill_in 'task_endtime_2i', with: '10'
-    #fill_in 'task_endtime_3i', with: '06'
-    #fill_in 'task_endtime_4i', with: '10'
-    #fill_in 'task_endtime_5i', with: '00'
 
     click_on '登録する'
 
-    click_on '終了期限でソートする'
+    click_on '終了期限'
 
-    expect(page).to have_text 'test_task_05 task_detail_05 2020/10/06 12:00 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 12:00 詳細 編集 削除'
+    expect(page).to have_text 'test_task_05 task_detail_05 2020/10/06 12:00 未着手 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 12:00 未着手 詳細 編集 削除'
   end
 
 
