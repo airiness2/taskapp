@@ -21,7 +21,7 @@
       <th><%= t('view.taskdetail') %></th>
       <th><%= sort_link(@q, :endtime, t('view.endtime'), default_order: :desc) %></th>
       <th><%= t('view.status') %></th>
-      <th><%= t('view.priority') %></th>
+      <th><%= sort_link(@q, :priority, t('view.priority'), default_order: :desc) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
