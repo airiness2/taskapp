@@ -12,6 +12,10 @@ ja:
         priority: "優先度"
         starttime: "開始時間"
         endtime: "終了期限"
+        status: "ステータス"
+        status/waiting: "未着手"
+        status/doing: "着手中"
+        status/done: "完了"
       user:
         username: "ユーザ名"
         email: "メールアドレス"
