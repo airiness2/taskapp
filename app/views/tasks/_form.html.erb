@@ -23,14 +23,12 @@
 
   <div class="field">
     <%= form.label :endtime %>
-    <%= form.datetime_select :endtime %>
+    <%= form.date_field :endtime %>
   </div>
 
   <div class="field">
     <%= form.label :status %>
     <%= form.select :status, [["未着手", "waiting"], ["着手中", "doing"],  ["完了", "done"]] %>
-
-
   </div>
 
   <div class="actions">
