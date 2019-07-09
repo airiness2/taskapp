@@ -70,5 +70,29 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(page).to have_text 'test_task_05 task_detail_05 2020/10/06 12:00 未着手 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 12:00 未着手 詳細 編集 削除'
   end
 
+  scenario "タスク名で検索されるかのテスト" do
+    visit tasks_path
+    fill_in 'q_name_cont', with: 'test_task_02'
+    click_on '検索'
+    expect(page).to have_content 'test_task_02'
+  end
+
+  scenario "ステータスで検索されるかのテスト" do
+    visit new_task_path
+
+    fill_in 'task_name', with: 'test_task_05'
+    fill_in 'task_detail', with: 'task_detail_05'
+
+    select '着手中', :from => 'task_status'
+
+    click_on '登録する'
+
+    visit tasks_path
+    select '着手中', :from => 'q_status_eq'
+
+    click_on '検索'
+    expect(page).to have_content 'test_task_05'
+  end
+
 
 end
