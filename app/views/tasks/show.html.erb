@@ -20,5 +20,10 @@
   <%= @task.aasm.human_state %>
 </p>
 
+<p>
+  <strong><%= t('view.priority') %>:</strong>
+  <%= @task.priority %>
+</p>
+
 <%= link_to '編集', edit_task_path(@task) %> |
 <%= link_to '戻る', tasks_path %>

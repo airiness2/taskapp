@@ -48,7 +48,7 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
     visit tasks_path
 
-    expect(page).to have_text 'test_task_02 samplesample 2015/12/06 未着手 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 未着手 詳細 編集 削除'
+    expect(page).to have_text 'test_task_02 samplesample 2015/12/06 未着手 高 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 未着手 中 詳細 編集 削除'
   end
 
 
@@ -58,17 +58,12 @@ RSpec.feature "タスク管理機能", type: :feature do
     fill_in 'task_name', with: 'test_task_05'
     fill_in 'task_detail', with: 'task_detail_05'
     fill_in 'task_endtime', with: '2020/10/6'
-#    select '2020', :from => 'task_endtime_1i'#
-#    select '10', :from => 'task_endtime_2i'
-#    select '6', :from => 'task_endtime_3i'
-#    select '12', :from => 'task_endtime_4i'
-#    select '00', :from => 'task_endtime_5i'
 
     click_on '登録する'
 
     click_on '終了期限'
 
-    expect(page).to have_text 'test_task_05 task_detail_05 2020/10/06 未着手 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 未着手 詳細 編集 削除'
+    expect(page).to have_text 'test_task_05 task_detail_05 2020/10/06 未着手 低 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 未着手 中 詳細 編集 削除'
   end
 
   scenario "タスク名で検索されるかのテスト" do
@@ -93,6 +88,21 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     click_on '検索'
     expect(page).to have_content 'test_task_05'
+  end
+
+  scenario "優先度でソートされるかのテスト" do
+    visit new_task_path
+
+    fill_in 'task_name', with: 'test_task_06'
+    fill_in 'task_detail', with: 'task_detail_06'
+    fill_in 'task_endtime', with: '2021/11/25'
+
+    click_on '登録する'
+
+    click_on '優先度'
+
+    expect(page).to have_text 'test_task_02 samplesample 2015/12/06 未着手 高 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 未着手 中 詳細 編集 削除 test_task_06 task_detail_06 2021/11/25 未着手 低 詳細 編集 削除'
+
   end
 
 

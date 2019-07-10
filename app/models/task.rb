@@ -16,4 +16,6 @@ class Task < ApplicationRecord
 
   validates :name, presence: true
   validates :detail, presence: true
+
+  enum priority: ['低', '中', '高']
 end

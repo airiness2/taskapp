@@ -21,6 +21,7 @@
       <th><%= t('view.taskdetail') %></th>
       <th><%= sort_link(@q, :endtime, t('view.endtime'), default_order: :desc) %></th>
       <th><%= t('view.status') %></th>
+      <th><%= sort_link(@q, :priority, t('view.priority'), default_order: :desc) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,6 +33,7 @@
         <td><%= task.detail %></td>
         <td><%= task.endtime %></td>
         <td><%= task.aasm.human_state %></td>
+        <td><%= task.priority  %></td>
         <td><%= link_to '詳細', task %></td>
         <td><%= link_to '編集', edit_task_path(task) %></td>
         <td><%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
