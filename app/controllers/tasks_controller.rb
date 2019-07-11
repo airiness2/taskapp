@@ -11,7 +11,7 @@ class TasksController < ApplicationController
 
     @q = Task.ransack(params[:q])
     @tasks = @q.result.order(created_at: :desc)
-    @tasks = @tasks.page(params[:page])
+    @tasks = @tasks.page(params[:page]).per(10)
   end
 
   def new

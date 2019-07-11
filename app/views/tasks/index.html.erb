@@ -1,20 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t('view.task') %><%= t('view.index') %></h1>
+<div class="nav-scroller bg-white box-shadow">
+    <nav class="nav nav-underline">
+
+        <%= search_form_for @q do |f| %>
+
+          <%= f.label :name_cont, "タスク名検索" %>
+          <%= f.search_field :name_cont %>
+          <%= f.label :status_eq, "ステータス検索" %>
+          <%= f.select :status_eq, [["未着手", "waiting"], ["着手中", "doing"], ["完了", "done"]], include_blank: true %>
+          <%= f.submit "検索" %>
+        <% end %>
+
+    </nav>
+</div>
 
 
-<%= search_form_for @q do |f| %>
-
-  <%= f.label :name_cont, "タスク名検索" %>
-  <%= f.search_field :name_cont %>
-  <%= f.label :status_eq, "ステータス検索" %>
-  <%= f.select :status_eq, [["未着手", "waiting"], ["着手中", "doing"], ["完了", "done"]], include_blank: true %>
-  <%= f.submit "検索" %>
-<% end %>
 <hr>
 
+<h4><%= t('view.task') %><%= t('view.index') %></h4>
 
-<table border="1">
+<table class="table table-striped">
   <thead>
     <tr>
       <th><%= t('view.taskname') %></th>
