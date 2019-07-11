@@ -1,3 +1,4 @@
+<div class="form-group">
 <%= form_with(model: task, local: true) do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
@@ -13,30 +14,31 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :detail %>
-    <%= form.text_area :detail %>
+    <%= form.text_area :detail, class: "form-control"  %>
   </div>
 
   <div class="field">
     <%= form.label :endtime %>
-    <%= form.date_field :endtime %>
+    <%= form.date_field :endtime, class: "form-control"  %>
   </div>
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.select :status, [["未着手", "waiting"], ["着手中", "doing"],  ["完了", "done"]] %>
+    <%= form.select :status, [["未着手", "waiting"], ["着手中", "doing"],  ["完了", "done"]],{}, {class: "form-control"}  %>
   </div>
 
   <div class="field">
     <%= form.label :priority %>
-    <%= form.select :priority, Task.priorities.keys.to_a, {} %>
+    <%= form.select :priority, Task.priorities.keys.to_a,{}, {class: "form-control"} %>
   </div>
-
+<br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
