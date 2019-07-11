@@ -45,4 +45,5 @@ gem 'aasm'
 gem "ransack"
 gem "kaminari"
 
-gem 'bootstrap-sass'
+gem 'bootstrap'
+gem 'jquery-rails'
