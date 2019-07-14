@@ -14,6 +14,8 @@ ja:
     user: "ユーザ"
     username: "ユーザ名"
     email: "メールアドレス"
+    login: "ログイン"
+    password: "パスワード"
   views:
     pagination:
       truncate: "..."
