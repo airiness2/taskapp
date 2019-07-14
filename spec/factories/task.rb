@@ -5,6 +5,8 @@ FactoryBot.define do
     detail { 'testtesttest' }
     endtime { '2017-10-06 12:00:00'}
     priority { 1 }
+    user_id { 1 }
+    user
   end
 
   factory :second_task, class: Task do
@@ -12,5 +14,6 @@ FactoryBot.define do
     detail { 'samplesample' }
     endtime { '2015-12-06 12:00:00'}
     priority { 2 }
+    user_id { 2 }
   end
 end

@@ -5,8 +5,17 @@ require 'rails_helper'
 RSpec.feature "タスク管理機能", type: :feature do
 
   background do
-    FactoryBot.create(:task)
-    FactoryBot.create(:second_task)
+    FactoryBot.create(:user)
+    FactoryBot.create(:second_user)
+#    FactoryBot.create(:task)
+#    FactoryBot.create(:second_task)
+
+    visit new_session_path
+
+    fill_in 'session_email', with: 'test1@example.com'
+    fill_in 'session_password', with: 'password'
+    click_on 'ログイン'
+
   end
 
   # scenario（itのalias）の中に、確認したい各項目のテストの処理を書きます。
@@ -14,7 +23,6 @@ RSpec.feature "タスク管理機能", type: :feature do
     visit tasks_path
 
     expect(page).to have_content 'testtesttest'
-    expect(page).to have_content 'samplesample'
   end
 
   scenario "タスク作成のテスト" do
@@ -33,9 +41,6 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     fill_in 'task_name', with: 'test_task_04',  match: :first
     fill_in 'task_detail', with: 'task_detail_04', match: :first
-#    fill_in 'task_endtime', with: '2019/07/06 20:00:00', match: :first
-#    select '2019-07-06 20:00:00', :from => 'task_endtime', match: :first
-
 
     click_on '登録する'
 
@@ -46,9 +51,17 @@ RSpec.feature "タスク管理機能", type: :feature do
   end
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
+    visit new_task_path
+
+    fill_in 'task_name', with: 'test_task_04'
+    fill_in 'task_detail', with: 'task_detail_04'
+    fill_in 'task_endtime', with: '2021/11/25'
+
+    click_on '登録する'
+
     visit tasks_path
 
-    expect(page).to have_text 'test_task_02 samplesample 2015/12/06 未着手 高 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 未着手 中 詳細 編集 削除'
+    expect(page).to have_text 'test_task_04 task_detail_04 2021/11/25 未着手 低 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 未着手 中 詳細 編集 削除'
   end
 
 
@@ -68,9 +81,9 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "タスク名で検索されるかのテスト" do
     visit tasks_path
-    fill_in 'q_name_cont', with: 'test_task_02'
+    fill_in 'q_name_cont', with: 'test_task_01'
     click_on '検索'
-    expect(page).to have_content 'test_task_02'
+    expect(page).to have_content 'test_task_01'
   end
 
   scenario "ステータスで検索されるかのテスト" do
@@ -101,7 +114,7 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     click_on '優先度'
 
-    expect(page).to have_text 'test_task_02 samplesample 2015/12/06 未着手 高 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 未着手 中 詳細 編集 削除 test_task_06 task_detail_06 2021/11/25 未着手 低 詳細 編集 削除'
+    expect(page).to have_text 'test_task_01 testtesttest 2017/10/06 未着手 中 詳細 編集 削除 test_task_06 task_detail_06 2021/11/25 未着手 低 詳細 編集 削除'
 
   end
 
