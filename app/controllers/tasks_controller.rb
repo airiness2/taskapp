@@ -3,15 +3,14 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-#    if params[:sort_expired]
-#      @tasks = Task.all.order(endtime: :desc)
-#    else
-#      @tasks = Task.all.order(created_at: :desc)
-#    end
 
-    @q = Task.ransack(params[:q])
-    @tasks = @q.result.order(created_at: :desc)
-    @tasks = @tasks.page(params[:page]).per(10)
+    if logged_in?
+      @q = Task.ransack(params[:q])
+      @tasks = @q.result.order(created_at: :desc)
+      @tasks = @tasks.page(params[:page]).per(10)
+    else
+      redirect_to new_session_path
+    end
   end
 
   def new

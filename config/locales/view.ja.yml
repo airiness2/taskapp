@@ -16,6 +16,7 @@ ja:
     email: "メールアドレス"
     login: "ログイン"
     password: "パスワード"
+    logout: "ログアウト"
   views:
     pagination:
       truncate: "..."
