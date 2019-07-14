@@ -11,6 +11,9 @@ ja:
     endtime: "終了期限"
     status: "ステータス"
     priority: "優先度"
+    user: "ユーザ"
+    username: "ユーザ名"
+    email: "メールアドレス"
   views:
     pagination:
       truncate: "..."
