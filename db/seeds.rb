@@ -11,4 +11,4 @@
 #  Task.create(:name => "タイトル #{no}", :detail => "詳細 #{no}")
 #end
 
-User.create(:name => "watanabe", email: "test@example.com")
+User.create(:name => "watanabe", email: "test@example.com", password_digest: "password")
