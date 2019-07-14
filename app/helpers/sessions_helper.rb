@@ -6,4 +6,9 @@ module SessionsHelper
   def logged_in?
     current_user.present?
   end
+
+  def sign_in(user)
+    self.current_user = user
+  end
+
 end
