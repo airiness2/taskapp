@@ -106,7 +106,7 @@ RSpec.feature "タスク管理機能", type: :feature do
   end
 
   scenario "ページネートが動作するかのテスト" do
-    30.times do |n|
+    20.times do |n|
       visit new_task_path
 
       fill_in 'task_name', with: "test_task_#{n}"
@@ -117,9 +117,7 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     click_on 'Next'
 
-    #save_and_open_page
-
-    expect(page).to have_text 'test_task_4'
+    expect(page).to have_text 'test_task_9'
   end
 
 

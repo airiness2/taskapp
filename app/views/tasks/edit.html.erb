@@ -1,6 +1,7 @@
-<h1><%= t('view.task') %><%= t('view.edit') %></h1>
+<h4><%= t('view.task') %><%= t('view.edit') %></h4>
 
 <%= render 'form', task: @task %>
 
-<%= link_to '詳細', @task %> |
-<%= link_to '戻る', tasks_path %>
+
+<%= link_to '詳細', @task, class: "btn btn-outline-dark btn-sm" %>
+<%= link_to '戻る', tasks_path, class: "btn btn-outline-dark btn-sm" %>
