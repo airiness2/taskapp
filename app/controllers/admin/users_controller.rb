@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.select(:id, :name, :email).order(id: :asc)
+    @users = User.all.includes(:tasks).order(id: :asc)
   end
 
   def new
