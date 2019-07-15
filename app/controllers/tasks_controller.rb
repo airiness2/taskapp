@@ -5,9 +5,9 @@ class TasksController < ApplicationController
   before_action :sign_in_user
 
   def index
-      @q = Task.ransack(params[:q])
-      @tasks = @q.result.order(created_at: :desc)
-      @tasks = @tasks.page(params[:page]).per(10).where(user: current_user)
+    @q = Task.ransack(params[:q])
+    @tasks = @q.result.order(created_at: :desc)
+    @tasks = @tasks.page(params[:page]).per(10).where(user: current_user)
   end
 
   def new
