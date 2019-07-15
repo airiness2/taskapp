@@ -2,16 +2,12 @@ class TasksController < ApplicationController
 
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-  def index
-#    if params[:sort_expired]
-#      @tasks = Task.all.order(endtime: :desc)
-#    else
-#      @tasks = Task.all.order(created_at: :desc)
-#    end
+  before_action :sign_in_user
 
+  def index
     @q = Task.ransack(params[:q])
     @tasks = @q.result.order(created_at: :desc)
-    @tasks = @tasks.page(params[:page]).per(10)
+    @tasks = @tasks.page(params[:page]).per(10).where(user: current_user)
   end
 
   def new
@@ -24,6 +20,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id
     if @task.save
       redirect_to tasks_path, notice: "タスクを作成しました!"
     else
@@ -58,11 +55,15 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :detail, :endtime, :status, :priority)
+    params.require(:task).permit(:name, :detail, :endtime, :status, :priority, :user_id)
   end
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def sign_in_user
+    redirect_to new_session_path unless logged_in?
   end
 
 end

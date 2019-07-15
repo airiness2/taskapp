@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  belongs_to :user
+  
   include AASM
 
   aasm :column => 'status' do

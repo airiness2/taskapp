@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-50.times do |no|
-  Task.create(:name => "タイトル #{no}", :detail => "詳細 #{no}")
-end
+#50.times do |no|
+#  Task.create(:name => "タイトル #{no}", :detail => "詳細 #{no}")
+#end
+
+User.create(:name => "watanabe", email: "test@example.com", password_digest: "password")

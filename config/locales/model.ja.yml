@@ -17,10 +17,9 @@ ja:
         status/doing: "着手中"
         status/done: "完了"
       user:
-        username: "ユーザ名"
+        name: "ユーザ名"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
-        name: "名前"
       label:
         name: "ラベル名"
