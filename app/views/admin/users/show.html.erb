@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table">
+  <tr>
+  <th>
+    ID
+  </th>
+  <td>
+    <%= @user.id %>
+  </td>
+  </tr>
+
+  <tr>
+  <th>
+    <%= t('view.username') %>
+  </th>
+  <td>
+    <%= @user.name %>
+  </td>
+</tr>
+
+</table>
+<%= link_to '編集', edit_admin_user_path(@user), class: "btn btn-outline-dark btn-sm"  %>
+<%= link_to '戻る', admin_users_path, class: "btn btn-outline-dark btn-sm"  %>
