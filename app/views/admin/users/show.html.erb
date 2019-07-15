@@ -17,7 +17,7 @@
       <td><%= task.name %></td>
       <td><%= task.detail %></td>
       <td><%= task.endtime %></td>
-      <td><%= task.status %></td>
+      <td><%= task.aasm.human_state %></td>
       <td><%= task.priority %></td>
     </tr>
   <% end %>
