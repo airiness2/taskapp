@@ -1,6 +1,8 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  before_action :admin_flg
+
   def index
     @users = User.all.includes(:tasks).order(id: :asc)
   end
@@ -56,4 +58,9 @@ class Admin::UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+
+  def admin_flg
+    raise Forbidden unless logged_in? && current_user.admin?
+  end
+
 end
