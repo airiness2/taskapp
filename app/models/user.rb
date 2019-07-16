@@ -12,4 +12,14 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  before_destroy :dont_delete_admin
+
+  private
+
+  def dont_delete_admin
+    if self.admin? && User.where(admin: true).count == 1
+      throw :abort
+    end
+  end
+
 end
