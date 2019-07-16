@@ -29,6 +29,11 @@
     <%= form.password_field :password, class: "form-control"  %>
   </div>
 
+  <div class="field">
+    <%= form.label :admin %>
+    <%= form.check_box :admin %>
+  </div>
+
 <br>
   <div class="actions">
     <%= form.submit class: "btn btn-primary" %>
