@@ -1,0 +1,27 @@
+
+<h4><%= @user.name %></h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t('view.taskname') %></th>
+      <th><%= t('view.taskdetail') %></th>
+      <th><%= t('view.endtime') %></th>
+      <th><%= t('view.status') %></th>
+      <th><%= t('view.priority') %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @user.tasks.each do |task| %>
+    <tr>
+      <td><%= task.name %></td>
+      <td><%= task.detail %></td>
+      <td><%= task.endtime %></td>
+      <td><%= task.aasm.human_state %></td>
+      <td><%= task.priority %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to '編集', edit_admin_user_path(@user), class: "btn btn-outline-dark btn-sm"  %>
+<%= link_to '戻る', admin_users_path, class: "btn btn-outline-dark btn-sm"  %>
