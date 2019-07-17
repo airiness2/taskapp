@@ -21,5 +21,6 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
+        admin: "管理者"
       label:
         name: "ラベル名"

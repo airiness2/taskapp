@@ -17,6 +17,7 @@ ja:
     login: "ログイン"
     password: "パスワード"
     logout: "ログアウト"
+    admin: "管理者"
   views:
     pagination:
       truncate: "..."

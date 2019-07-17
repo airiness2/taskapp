@@ -1,6 +1,10 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  before_action :admin_flg
+
+  before_action :destroy_self, only: [:destroy]
+
   def index
     @users = User.all.includes(:tasks).order(id: :asc)
   end
@@ -50,10 +54,21 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                    :password_confirmation)
+                    :password_confirmation, :admin)
   end
 
   def set_user
     @user = User.find(params[:id])
   end
+
+  def admin_flg
+    raise Forbidden unless logged_in? && current_user.admin?
+  end
+
+  def destroy_self
+    if @user == current_user
+      redirect_to admin_users_path, notice: '自身を削除することは出来ません'
+    end
+  end
+
 end
