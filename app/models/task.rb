@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :user
-  
+
   include AASM
 
   aasm :column => 'status' do
@@ -20,4 +20,7 @@ class Task < ApplicationRecord
   validates :detail, presence: true
 
   enum priority: ['低', '中', '高']
+
+  has_many :labelings, dependent: :destroy
+  has_many :label_tasks, through: :labelings, source: :label  
 end
