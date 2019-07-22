@@ -41,6 +41,16 @@
   <%= @task.priority %>
 </td>
 </tr>
+<tr>
+<th>
+  <%= t('view.label') %>
+</th>
+<td>
+  <% @task.label_ids.each do |label| %>
+  <%= Label.find(label).name %>
+  <% end %>
+</td>
+</tr>
 </table>
 <%= link_to '編集', edit_task_path(@task), class: "btn btn-outline-dark btn-sm"  %>
 <%= link_to '戻る', tasks_path, class: "btn btn-outline-dark btn-sm"  %>

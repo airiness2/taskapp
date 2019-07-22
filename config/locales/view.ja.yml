@@ -18,6 +18,7 @@ ja:
     password: "パスワード"
     logout: "ログアウト"
     admin: "管理者"
+    label: "ラベル"
   views:
     pagination:
       truncate: "..."
