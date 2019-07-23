@@ -47,7 +47,7 @@
 </th>
 <td>
   <% @task.label_ids.each do |label| %>
-  <%= Label.find(label).name %>
+  <label style="background-color:lightblue"><%= Label.find(label).name %></label>
   <% end %>
 </td>
 </tr>
