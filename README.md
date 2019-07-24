@@ -1,4 +1,9 @@
-# README
+Name
+====
+タスク管理ツール
+
+## Description
+- 株式会社万葉様新入社員教育課題
 
 ## Models
 
@@ -7,7 +12,7 @@
 |Column|Data|
 |--|--|
 |id|integer|
-|username|strings|
+|name|strings|
 |password|strings|
 |name|strings|
 |email|strings|
@@ -18,12 +23,11 @@
 |--|--|
 |id|integer|
 |user_id|integer|
-|label_id|integer|
-|taskname|strings|
-|starttime|datetime|
+|name|strings|
 |endtime|datetime|
 |status|strings|
 |priority|integer|
+|detail|strings|
 
 - Labels
 
@@ -32,6 +36,13 @@
 |id|integer|
 |labelname|strings|
 
+- Labelings
+
+|Column|Data|
+|--|--|
+|id|integer|
+|task_id|integer|
+|label_id|integer|
 
 
 ## Environment
@@ -39,16 +50,3 @@
 - Rails 5.2.3
 - ruby 2.6.3p62
 - psql (PostgreSQL) 11.3
-
-## Deploying
-
-- ディレクトリ配下のファイルをコミット対象にする  
-git add -A  
-
-- コミットする  
-git commit -m 'コメント'  
-
-- githubにデプロイ  
-git push origin master  
-
-- github連携により、自動的にherokuにもデプロイされる
