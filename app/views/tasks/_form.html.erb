@@ -36,11 +36,12 @@
     <%= form.label :priority %>
     <%= form.select :priority, Task.priorities.keys.to_a,{}, {class: "form-control"} %>
   </div>
-<br>
 
+<%= t('view.label') %>
+<br>
 <% Label.all.each do |label| %>
   <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false}, label[:id] %>
-  <label style="background-color: lightblue"><%= label.name %></label>
+    <label style="background-color: lightblue"><%= label.name %></label>
 <% end %>
   <div class="actions">
     <%= form.submit class: "btn btn-primary" %>
