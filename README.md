@@ -50,3 +50,8 @@ Name
 - Rails 5.2.3
 - ruby 2.6.3p62
 - psql (PostgreSQL) 11.3
+
+デフォルトユーザ
+
+- email: "admin@example.com"
+- password: "taskapp"
