@@ -14,6 +14,7 @@ FactoryBot.define do
     name { "test2" }
     email { "test2@example.com" }
     password { "password" }
+    admin { true }
 
     after(:create) do |second_user|
       create(:second_task, user: second_user)
