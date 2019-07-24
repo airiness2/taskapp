@@ -15,7 +15,7 @@ class TasksController < ApplicationController
       @task = Task.new(task_params)
     else
       @task = Task.new
-      @task.labels.build
+      @task.labelings.build
     end
   end
 
@@ -33,7 +33,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task.labels.build
   end
 
   def update
