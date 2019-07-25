@@ -34,7 +34,8 @@ Name
 |Column|Data|
 |--|--|
 |id|integer|
-|labelname|strings|
+|name|strings|
+|id|user_id|
 
 - Labelings
 
