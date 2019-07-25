@@ -9,7 +9,7 @@
           <%= f.label :status_eq, "ステータス検索" %>
           <%= f.select :status_eq, [["未着手", "waiting"], ["着手中", "doing"], ["完了", "done"]], include_blank: true %>
           <%= f.label :labels_id_eq, "ラベル検索" %>
-          <%= f.collection_select :labels_id_eq, Label.all.where(user_id: nil).or(Label.all.where(user_id: current_user.id)), :id, :name, include_blank: true %>
+          <%= f.collection_select :labels_id_eq, label_list, :id, :name, include_blank: true %>
           <%= f.submit "検索" %>
         <% end %>
 

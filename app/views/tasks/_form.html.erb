@@ -39,7 +39,7 @@
 
 <%= t('view.label') %>
 <br>
-<% Label.all.where(user_id: nil).or(Label.all.where(user_id: current_user.id)).each do |label| %>
+<% label_list.each do |label| %>
   <% if action_name == "new" || action_name == "create" %>
     <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false}, label[:id] %>
     <label style="background-color: lightblue"><%= label.name %></label>
