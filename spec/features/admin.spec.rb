@@ -5,6 +5,13 @@ RSpec.feature "管理画面機能", type: :feature do
   background do
     FactoryBot.create(:user)
     FactoryBot.create(:second_user)
+
+    visit new_session_path
+
+    fill_in 'session_email', with: 'test2@example.com'
+    fill_in 'session_password', with: 'password'
+    click_on 'ログイン'
+
   end
 
   scenario "ユーザ一覧のテスト" do

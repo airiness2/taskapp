@@ -7,6 +7,9 @@ RSpec.feature "タスク管理機能", type: :feature do
   background do
     FactoryBot.create(:user)
     FactoryBot.create(:second_user)
+    FactoryBot.create(:label)
+    FactoryBot.create(:second_label)
+
 #    FactoryBot.create(:task)
 #    FactoryBot.create(:second_task)
 
@@ -133,5 +136,38 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(page).to have_text 'test_task_9'
   end
 
+
+  scenario "ラベルが設定されるかのテスト" do
+    visit new_task_path
+
+    fill_in 'task_name', with: 'test_task_04',  match: :first
+    fill_in 'task_detail', with: 'task_detail_04', match: :first
+
+    check 'task_label_ids_19'
+
+    click_on '登録する'
+
+    click_link("詳細", :match => :first)
+
+    expect(page).to have_content '仕事'
+
+  end
+
+  scenario "ラベルで検索されるかのテスト" do
+    visit new_task_path
+
+    fill_in 'task_name', with: 'test_task_05'
+    fill_in 'task_detail', with: 'task_detail_05'
+
+    check 'task_label_ids_21'
+
+    click_on '登録する'
+
+    visit tasks_path
+    select '仕事', :from => 'q_labels_id_eq'
+
+    click_on '検索'
+    expect(page).to have_content 'test_task_05'
+  end
 
 end
