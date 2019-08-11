@@ -1,4 +1,16 @@
 
+<% if time_alert %>
+  <div class="alert alert-danger" role="alert"">
+    <%= @expirations.count %> 件の期限切れ、または期限間近のタスクがあります。
+    <ul>
+    <% @expirations.each do |expiration| %>
+      <li><%= link_to expiration.name, expiration %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <div class="nav-scroller bg-white box-shadow">
     <nav class="nav nav-underline">
 
