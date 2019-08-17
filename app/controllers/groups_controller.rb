@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+  end
 
   def new
     if params[:back]

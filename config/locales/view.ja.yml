@@ -19,6 +19,8 @@ ja:
     logout: "ログアウト"
     admin: "管理者"
     label: "ラベル"
+    groupname: "グループ名"
+    groupinfo: "グループ情報"
   views:
     pagination:
       truncate: "..."

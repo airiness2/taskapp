@@ -1,0 +1,26 @@
+<h4><%= t('view.group') %><%= t('view.index') %></h4>
+<div style="text-align: right">
+<%= link_to 'グループ新規作成', new_group_path, class: "btn btn-dark btn-sm"  %>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= t('view.groupname') %></th>
+      <th><%= t('view.groupinfo') %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.name %></td>
+        <td><%= group.info %></td>
+        <td><%= link_to '詳細', group %></td>
+        <td><%= link_to '編集', edit_group_path(group) %></td>
+        <td><%= link_to '削除', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table">
+<tr>
+<th>
+  <%= t('view.groupname') %>
+  </th>
+  <td>
+  <%= @group.name %>
+</td>
+</tr>
+<tr>
+<th>
+  <%= t('view.groupinfo') %>
+</th>
+<td>
+  <%= @group.info %>
+</td>
+</tr>
+</table>
+<%= link_to '編集', edit_group_path(@group), class: "btn btn-outline-dark btn-sm"  %>
+<%= link_to '戻る', groups_path, class: "btn btn-outline-dark btn-sm"  %>
