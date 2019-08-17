@@ -12,6 +12,7 @@
 #end
 
 User.create!(name: "admin_user", email: "admin@example.com", password: "taskapp", admin: true)
+Group.create!(name: "first_group", info: "The first group", owner_id: 1)
 
 Label.create(name: "仕事")
 Label.create(name: "趣味")

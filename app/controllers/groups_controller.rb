@@ -2,6 +2,8 @@ class GroupsController < ApplicationController
 
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
+  before_action :edit_group, only: [:edit, :update, :destroy]
+
   def index
     @groups = Group.all
   end
@@ -17,6 +19,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @group.owner_id = current_user.id
     if @group.save
       redirect_to groups_path, notice: "グループを作成しました!"
     else
@@ -51,10 +54,16 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :info)
+    params.require(:group).permit(:name, :info, :owner_id, user_ids:[])
   end
 
   def set_group
     @group = Group.find(params[:id])
+  end
+
+  def edit_group
+    if @group.owner_id != current_user.id
+      redirect_to groups_path, notice: 'グループの編集は作成者のみが行えます'
+    end
   end
 end
