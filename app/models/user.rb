@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :labels, dependent: :destroy
+  has_many :groupings, dependent: :destroy, foreign_key: 'user_id'
 
   before_validation { email.downcase! }
 

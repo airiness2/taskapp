@@ -1,3 +1,3 @@
 class Group < ApplicationRecord
-  belongs_to :grouping
+  has_many :groupings, dependent: :destroy, foreign_key: 'group_id'
 end
