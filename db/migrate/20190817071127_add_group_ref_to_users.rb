@@ -1,5 +1,5 @@
 class AddGroupRefToUsers < ActiveRecord::Migration[5.2]
   def change
-    add_reference :users, :grouping, foreign_key: true
+    add_reference :users, :grouping
   end
 end

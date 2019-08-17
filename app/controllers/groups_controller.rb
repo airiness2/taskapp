@@ -1,11 +1,12 @@
 class GroupsController < ApplicationController
 
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-
   before_action :edit_group, only: [:edit, :update, :destroy]
+  before_action :sign_in_user
 
   def index
     @groups = Group.all
+    @grouping = current_user.groupings.find_by(user_id: current_user.id)
   end
 
   def new
@@ -65,5 +66,9 @@ class GroupsController < ApplicationController
     if @group.owner_id != current_user.id
       redirect_to groups_path, notice: 'グループの編集は作成者のみが行えます'
     end
+  end
+
+  def sign_in_user
+    redirect_to new_session_path unless logged_in?
   end
 end
