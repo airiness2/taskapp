@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_08_17_071127) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "info"
+    t.integer "user_id"
     t.bigint "grouping_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_08_17_071127) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.integer "group_id"
     t.bigint "grouping_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["grouping_id"], name: "index_users_on_grouping_id"
