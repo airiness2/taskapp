@@ -5,10 +5,11 @@ class GroupingsController < ApplicationController
   end
 
   def destroy
-    grouping = current_user.groupings.find_by(id: params[:id]).destroy
-    redirect_to groups_path, notice: "#{grouping.group.name}から退会しました"
+    if current_user.user_groups.find_by(owner_id: current_user.id)
+      redirect_to groups_path, notice: "グループの作成者はグループから離脱出来ません"
+    else
+      grouping = current_user.groupings.find_by(id: params[:id]).destroy
+      redirect_to groups_path, notice: "#{grouping.group.name}から離脱しました"
+    end
   end
 end
-
-
-# グループから退会ではなく、グループそのものを削除している

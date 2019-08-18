@@ -18,12 +18,17 @@
       <tr>
         <td><%= group.name %></td>
         <td><%= group.info %></td>
+        <% if group.owner_id == current_user.id %>
+        <td>
+        </td>
+        <% else %>
         <td>
           <% if group.group_users.find_by(id: current_user.id) %>
             <%= link_to 'グループから抜ける', grouping_path(id: @grouping.id), method: :delete, class: 'btn btn-outline-danger btn-sm' %>
           <% else %>
             <%= link_to 'グループに参加する', groupings_path(group_id: group.id), method: :post, class: 'btn btn-outline-primary btn-sm' %>
           <% end %>
+        <% end %>
         <td>
           <% if group.group_users.ids.include?(current_user.id) %>
             <%= link_to '詳細', group %></td>

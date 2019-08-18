@@ -22,6 +22,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
+    @group.groupings.build(user_id: current_user.id, group_id: @group.id)
     if @group.save
       redirect_to groups_path, notice: "グループを作成しました!"
     else
