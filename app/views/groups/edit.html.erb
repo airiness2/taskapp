@@ -1,0 +1,6 @@
+<h4><%= t('view.group') %><%= t('view.edit') %></h4>
+
+<%= render 'form', group: @group %>
+
+<%= link_to '詳細', @group, class: "btn btn-outline-dark btn-sm" %>
+<%= link_to '戻る', groups_path, class: "btn btn-outline-dark btn-sm" %>

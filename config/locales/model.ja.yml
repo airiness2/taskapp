@@ -4,6 +4,7 @@ ja:
       task: "タスク"
       user: "ユーザ"
       label: "ラベル"
+      group: "グループ"
     attributes:
       task:
         name: "タスク名"
@@ -24,3 +25,6 @@ ja:
         admin: "管理者"
       label:
         name: "ラベル名"
+      group:
+        name: "グループ名"
+        info: "グループ情報"

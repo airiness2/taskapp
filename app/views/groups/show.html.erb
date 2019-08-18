@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table">
+  <tr>
+    <th>
+      <%= t('view.groupname') %>
+    </th>
+    <td>
+      <%= @group.name %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <%= t('view.groupinfo') %>
+    </th>
+    <td>
+      <%= @group.info %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <%= t('view.user') %><%= t('view.index') %>
+    </th>
+    <td>
+      <% @group.group_users.map(&:name).each do |name| %>
+        <%= name %>
+      <% end %> 
+    </td>
+  </tr>
+</table>
+<%= link_to '編集', edit_group_path(@group), class: "btn btn-outline-dark btn-sm"  %>
+<%= link_to '戻る', groups_path, class: "btn btn-outline-dark btn-sm"  %>
+
+<br>
+<hr>
+<br>
+
+<h5><%= @group.name %><%= t('view.task') %><%= t('view.index') %></h5>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= t('view.username') %></th>
+      <th><%= t('view.taskname') %></th>
+      <th><%= t('view.taskdetail') %></th>
+      <th><%= t('view.endtime') %></th>
+      <th><%= t('view.status') %></th>
+      <th><%= t('view.priority') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.user.name %></td>
+        <td><%= task.name %></td>
+        <td><%= task.detail %></td>
+        <td><%= task.endtime %></td>
+        <td><%= task.aasm.human_state %></td>
+        <td><%= task.priority  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @tasks %>

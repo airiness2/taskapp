@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_203556) do
+ActiveRecord::Schema.define(version: 2019_08_17_071127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groupings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_groupings_on_group_id"
+    t.index ["user_id"], name: "index_groupings_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.text "info"
+    t.integer "owner_id"
+    t.bigint "grouping_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grouping_id"], name: "index_groups_on_grouping_id"
+  end
 
   create_table "labelings", force: :cascade do |t|
     t.integer "task_id"
@@ -50,8 +69,11 @@ ActiveRecord::Schema.define(version: 2019_07_24_203556) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.bigint "grouping_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["grouping_id"], name: "index_users_on_grouping_id"
   end
 
+  add_foreign_key "groups", "groupings"
   add_foreign_key "labels", "users"
 end

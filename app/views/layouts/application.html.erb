@@ -16,9 +16,14 @@
       <% if logged_in? && current_user.admin? %>
         <%= link_to '管理画面', admin_users_path, class: "nav-item" %>
         &nbsp;
+        &nbsp;
       <% end %>
       <% if logged_in? %>
           <%= link_to current_user.name, user_path(current_user.id), class: "nav-item" %>
+          &nbsp;
+          &nbsp;
+          <%= link_to t('view.group'), groups_path, class: "nav-item" %>
+          &nbsp;
           &nbsp;
           <%= link_to t('view.logout'), session_path(current_user.id), method: :delete, class: "nav-item" %>
       <% end %>
