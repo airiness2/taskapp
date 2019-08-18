@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   before_action :edit_group, only: [:edit, :update, :destroy]
   before_action :sign_in_user
+  before_action :user_in_group, only: [:show]
 
   def index
     @groups = Group.all
@@ -71,4 +72,11 @@ class GroupsController < ApplicationController
   def sign_in_user
     redirect_to new_session_path unless logged_in?
   end
+
+  def user_in_group
+    unless @group.group_users.ids.include?(current_user.id)
+      redirect_to groups_path, notice: '詳細画面はグループメンバーのみ参照できます'
+    end
+  end
+
 end
