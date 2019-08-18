@@ -31,6 +31,9 @@ class GroupsController < ApplicationController
   end
 
   def show
+    groupusers = @group.group_users.ids
+    @tasks = Task.where(:user_id => groupusers)
+    @tasks = @tasks.page(params[:page]).per(10)
   end
 
   def edit

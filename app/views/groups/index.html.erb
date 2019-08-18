@@ -18,33 +18,36 @@
       <tr>
         <td><%= group.name %></td>
         <td><%= group.info %></td>
-        <% if group.owner_id == current_user.id %>
         <td>
+      <% if group.owner_id == current_user.id %>
         </td>
+      <% else %>
+        <% if group.group_users.find_by(id: current_user.id) %>
+          <%= link_to 'グループから抜ける', grouping_path(id: @grouping.id), method: :delete, data: { confirm: 'グループから抜けますか?' }, class: 'btn btn-outline-danger btn-sm' %>
         <% else %>
-        <td>
-          <% if group.group_users.find_by(id: current_user.id) %>
-            <%= link_to 'グループから抜ける', grouping_path(id: @grouping.id), method: :delete, class: 'btn btn-outline-danger btn-sm' %>
-          <% else %>
-            <%= link_to 'グループに参加する', groupings_path(group_id: group.id), method: :post, class: 'btn btn-outline-primary btn-sm' %>
-          <% end %>
+          <%= link_to 'グループに参加する', groupings_path(group_id: group.id), method: :post, data: { confirm: 'グループに参加しますか?' }, class: 'btn btn-outline-secondary btn-sm' %>
         <% end %>
+        </td>
+      <% end %>
+      <% if group.group_users.ids.include?(current_user.id) %>
         <td>
-          <% if group.group_users.ids.include?(current_user.id) %>
-            <%= link_to '詳細', group %></td>
-          <% end %>
-        <% if group.owner_id == current_user.id %>
+          <%= link_to '詳細', group %>
+        </td>
+      <% else %>
+        <td></td>
+      <% end %>
+      <% if group.owner_id == current_user.id %>
         <td>
           <%= link_to '編集', edit_group_path(group) %>
         </td>
         <td>
-          <%= link_to '削除', group, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to '削除', group, method: :delete, data: { confirm: 'グループを削除しますか?' } %>
         </td>
-        <% else %>
+      <% else %>
         <td colspan="2" >
         </td>
-        <% end %>
-      </tr>
+      <% end %>
+    </tr>
     <% end %>
   </tbody>
 </table>
