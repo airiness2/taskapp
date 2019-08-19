@@ -30,6 +30,9 @@ class TasksController < ApplicationController
   end
 
   def show
+    if @task.user_id == current_user.id
+      @task.update(read: true)
+    end
   end
 
   def edit
@@ -56,7 +59,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :detail, :endtime, :status, :priority, :user_id, label_ids:[])
+    params.require(:task).permit(:name, :detail, :endtime, :status, :priority, :user_id, :read, label_ids:[])
   end
 
   def set_task

@@ -14,8 +14,9 @@ Name
 |id|integer|
 |name|strings|
 |password|strings|
-|name|strings|
 |email|strings|
+|admin|boolean|
+|grouping_id|integer|
 
 - Tasks
 
@@ -28,6 +29,7 @@ Name
 |status|strings|
 |priority|integer|
 |detail|strings|
+|read|boolean|
 
 - Labels
 
@@ -45,6 +47,23 @@ Name
 |task_id|integer|
 |label_id|integer|
 
+- Groups
+
+|Column|Data|
+|--|--|
+|id|integer|
+|name|strings|
+|info|text|
+|owner_id|integer|
+|grouping_id|integer|
+
+- Groupings
+
+|Column|Data|
+|--|--|
+|id|integer|
+|user_id|integer|
+|group_id|integer|
 
 ## Environment
 

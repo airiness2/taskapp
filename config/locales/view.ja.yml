@@ -22,6 +22,7 @@ ja:
     group: "グループ"
     groupname: "グループ名"
     groupinfo: "グループ情報"
+    unread: "未読"
   views:
     pagination:
       truncate: "..."
