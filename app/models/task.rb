@@ -24,4 +24,6 @@ class Task < ApplicationRecord
   has_many :labelings, dependent: :destroy, foreign_key: 'task_id'
   has_many :labels, through: :labelings, source: :label
   accepts_nested_attributes_for :labelings
+
+  has_many :reads, dependent: :destroy
 end

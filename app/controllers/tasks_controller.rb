@@ -30,8 +30,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    if @task.user_id == current_user.id
-      @task.update(read: true)
+    if @task.reads.find_by(user_id: current_user.id) == nil
+      @task.reads.create(user_id: current_user.id, flg: true, task_id: @task.id)
     end
   end
 

@@ -29,7 +29,6 @@ Name
 |status|strings|
 |priority|integer|
 |detail|strings|
-|read|boolean|
 
 - Labels
 
@@ -64,6 +63,14 @@ Name
 |id|integer|
 |user_id|integer|
 |group_id|integer|
+
+- Reads
+|Column|Data|
+|--|--|
+|id|integer|
+|task_id|integer|
+|user_id|integer|
+|flg|boolean|
 
 ## Environment
 
