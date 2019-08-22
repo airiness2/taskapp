@@ -32,6 +32,21 @@
     <%= form.select :status, [["未着手", "waiting"], ["着手中", "doing"],  ["完了", "done"]],{}, {class: "form-control"}  %>
   </div>
 
+  <% if @task.files.attached? %>
+  <div class="field">
+    <label>ファイル一覧</label>
+    <br>
+    <% @task.files.each do |file| %>
+      <%= link_to file.filename, file, target: '_blank' %>
+      <font size="-1">
+       <%= link_to '削除する', delete_file_attachment_task_url(file.id), method: :delete, data: { confirm: '削除しますか?' } %>
+      </font>
+      <br>
+    <% end %>
+  </div>
+  <% end %>
+
+
   <div class="field">
     <%= form.label "ファイル添付" %>
     <%= form.file_field :files, multiple: true, class: "form-control"  %>
