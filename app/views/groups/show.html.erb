@@ -24,7 +24,7 @@
     <td>
       <% @group.group_users.map(&:name).each do |name| %>
         <%= name %>
-      <% end %> 
+      <% end %>
     </td>
   </tr>
 </table>
@@ -39,6 +39,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th><%= t('view.unread') %></th>
       <th><%= t('view.username') %></th>
       <th><%= t('view.taskname') %></th>
       <th><%= t('view.taskdetail') %></th>
@@ -48,18 +49,7 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.user.name %></td>
-        <td><%= task.name %></td>
-        <td><%= task.detail %></td>
-        <td><%= task.endtime %></td>
-        <td><%= task.aasm.human_state %></td>
-        <td><%= task.priority  %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <%= render 'layouts/task_list' %>
 </table>
 
 <%= paginate @tasks %>

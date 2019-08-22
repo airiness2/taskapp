@@ -44,8 +44,9 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th><%= t('view.unread') %></th>
+      <th><%= t('view.username') %></th>
       <th><%= t('view.taskname') %></th>
-      <th><%= t('view.taskdetail') %></th>
       <th><%= sort_link(@q, :endtime, t('view.endtime'), default_order: :desc) %></th>
       <th><%= t('view.status') %></th>
       <th><%= sort_link(@q, :priority, t('view.priority'), default_order: :desc) %></th>
@@ -53,20 +54,7 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.name %></td>
-        <td><%= task.detail %></td>
-        <td><%= task.endtime %></td>
-        <td><%= task.aasm.human_state %></td>
-        <td><%= task.priority  %></td>
-        <td><%= link_to '詳細', task %></td>
-        <td><%= link_to '編集', edit_task_path(task) %></td>
-        <td><%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <%= render 'layouts/task_list' %>
 </table>
 
 <%= paginate @tasks %>
