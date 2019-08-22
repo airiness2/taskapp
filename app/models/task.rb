@@ -26,4 +26,6 @@ class Task < ApplicationRecord
   accepts_nested_attributes_for :labelings
 
   has_many :reads, dependent: :destroy
+
+  has_many_attached :files
 end

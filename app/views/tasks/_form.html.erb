@@ -33,6 +33,11 @@
   </div>
 
   <div class="field">
+    <%= form.label "ファイル添付" %>
+    <%= form.file_field :files, multiple: true, class: "form-control"  %>
+  </div>
+
+  <div class="field">
     <%= form.label :priority %>
     <%= form.select :priority, Task.priorities.keys.to_a,{}, {class: "form-control"} %>
   </div>
