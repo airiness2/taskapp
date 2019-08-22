@@ -49,3 +49,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 
 gem 'bcrypt'
+
+gem 'dotenv-rails'
+gem 'cloudinary', require: false
+gem 'activestorage-cloudinary-service'
