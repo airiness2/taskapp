@@ -56,10 +56,16 @@ class TasksController < ApplicationController
     render :new if @task.invalid?
   end
 
+  def delete_file_attachment
+    @file = ActiveStorage::Attachment.find(params[:id])
+    @file.purge
+    redirect_back(fallback_location: request.referer)
+  end
+  
   private
 
   def task_params
-    params.require(:task).permit(:name, :detail, :endtime, :status, :priority, :user_id, :read, label_ids:[])
+    params.require(:task).permit(:name, :detail, :endtime, :status, :priority, :user_id, :read, label_ids:[], files: [])
   end
 
   def set_task
