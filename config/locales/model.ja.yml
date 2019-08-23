@@ -23,6 +23,7 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         admin: "管理者"
+        image: "プロフィール画像"
       label:
         name: "ラベル名"
       group:
