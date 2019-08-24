@@ -1,0 +1,7 @@
+<% if @user.image? %>
+  <%= image_tag @user.image.url %>
+<% else %>
+  <%= image_tag("animal_arupaka.png") %>
+<% end %>
+
+<p class="makespace">&nbsp;</p>
