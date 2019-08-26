@@ -24,6 +24,7 @@ ja:
     groupinfo: "グループ情報"
     unread: "未読"
     files: "添付ファイル"
+    calendar: "カレンダー"    
   views:
     pagination:
       truncate: "..."

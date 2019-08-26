@@ -61,7 +61,11 @@ class TasksController < ApplicationController
     @file.purge
     redirect_back(fallback_location: request.referer)
   end
-  
+
+  def calendar
+    @tasks = Task.where(user: current_user)
+  end
+
   private
 
   def task_params

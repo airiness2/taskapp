@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "simple_calendar";
 
 
 body {
@@ -13,4 +14,25 @@ body {
 
 .makespace {
   margin: 10px;
+}
+
+.calendar-heading {
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.calendar-title {
+  font-size: 2em;
+}
+
+.cal-container {
+  display: table;
+  margin: 0 auto;
+}
+.cal-item {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 180px;
 }

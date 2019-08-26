@@ -22,6 +22,12 @@
           <%= link_to current_user.name, user_path(current_user.id), class: "nav-item" %>
           &nbsp;
           &nbsp;
+          <%= link_to t('view.task'), tasks_path, class: "nav-item" %>
+          &nbsp;
+          &nbsp;
+          <%= link_to t('view.calendar'), calendar_path, class: "nav-item" %>
+          &nbsp;
+          &nbsp;
           <%= link_to t('view.group'), groups_path, class: "nav-item" %>
           &nbsp;
           &nbsp;
