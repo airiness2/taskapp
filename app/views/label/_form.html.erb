@@ -1,5 +1,3 @@
-<h4>新規<%= t('view.label') %>作成</h4>
-
 <div class="form-group">
 <%= form_with(model: @label, url: label_index_path, local: true) do |f| %>
 
@@ -13,5 +11,3 @@
   </div>
 <% end %>
 </div>
-
-<%= link_to '戻る', :back, class: "btn btn-outline-dark btn-sm"  %>

@@ -1,10 +1,27 @@
 <h4>作成<%= t('view.label') %><%= t('view.index') %></h4>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= t('view.label') %></th>
+      <th></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
 
-<% @labels.each do |label| %>
-  <ul class="label-list">
-    <li><%= label.name %></li>
-  </ul>
-<% end %>
+  <tbody>
+    <% @labels.each do |label| %>
+      <tr>
+        <td><%= label.name %></td>
+        <td>
+          <%= link_to '編集', edit_label_path(label) %>
+        </td>
+        <td>
+          <%= link_to '削除', label, method: :delete, data: { confirm: 'ラベルを削除しますか?' } %>
+        </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <p class="makespace">&nbsp;</p>
 

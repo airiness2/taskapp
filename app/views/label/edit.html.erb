@@ -1,7 +1,7 @@
-<h4>新規<%= t('view.label') %>作成</h4>
+<h4><%= t('view.label') %>編集</h4>
 
 <div class="form-group">
-<%= form_with(model: @label, url: label_index_path, local: true) do |f| %>
+<%= form_with(model: @label, url: label_path, local: true) do |f| %>
 
   <div class="field">
     <%= f.label :name %>
