@@ -31,6 +31,9 @@
           <%= link_to t('view.group'), groups_path, class: "nav-item" %>
           &nbsp;
           &nbsp;
+          <%= link_to t('view.label'), label_index_path, class: "nav-item" %>
+          &nbsp;
+          &nbsp;
           <%= link_to t('view.logout'), session_path(current_user.id), method: :delete, class: "nav-item" %>
       <% end %>
     </nav>

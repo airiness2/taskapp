@@ -1,7 +1,11 @@
 class LabelController < ApplicationController
   def new
     @label = Label.new
-    #redirect_to tasks_path
+  end
+
+  def index
+    @labels = Label.where(user_id: current_user.id)
+    @labelings = Labeling.joins(:label).where(labels: {user_id: nil}).group(:name).count
   end
 
   def create

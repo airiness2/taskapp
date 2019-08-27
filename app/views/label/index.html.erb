@@ -1,0 +1,12 @@
+<h4>作成<%= t('view.label') %><%= t('view.index') %></h4>
+
+<% @labels.each do |label| %>
+  <ul class="label-list">
+    <li><%= label.name %></li>
+  </ul>
+<% end %>
+
+<p class="makespace">&nbsp;</p>
+
+<h4>デフォルト<%= t('view.label') %><%= t('view.frequency') %></h4>
+<%= column_chart @labelings %>
