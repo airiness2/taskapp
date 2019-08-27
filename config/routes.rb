@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :groupings, only: [:create, :destroy]
+
+  get '/calendar', to: 'tasks#calendar'
+
 end

@@ -1,0 +1,9 @@
+<%= month_calendar events: @tasks, attribute: :endtime do |date, tasks| %>
+  <%= date.to_formatted_s(:only_day) %>
+
+  <% tasks.each do |task| %>
+    <div>
+      <font color="red" size="-1">期限タスク: <%= link_to task.name, task %></font>
+    </div>
+  <% end %>
+<% end %>
