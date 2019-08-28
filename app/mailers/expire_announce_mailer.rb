@@ -1,7 +1,7 @@
 class ExpireAnnounceMailer < ApplicationMailer
-  def contact_mail(contact)
-    @contact = "test2@example.com"
-
-    mail to: "test@example.com", subject: "お問い合わせの確認メール"
+  def expire_mail(user,expiretasks)
+    @user = user
+    @expiretasks = expiretasks
+    mail to: user.email, subject: "期限間近タスク通知メール"
   end
 end
