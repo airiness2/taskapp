@@ -1,0 +1,15 @@
+<h2>タスク管理ツールからのお知らせ</h2>
+このメールは、対象の者に向けて週1回配信しています。
+<br>
+<br>
+<%= @user.name %>様の期限切れ、または期限間近のタスク一覧です。
+<br>
+<br>
+<hr>
+<br>
+<% @expiretasks.each do |expiretask| %>
+タスク名：<%= expiretask.name %> &nbsp;&nbsp; /  &nbsp;&nbsp;
+期限：<%= expiretask.endtime %>
+<br>
+<br>
+<% end %>
