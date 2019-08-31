@@ -15,6 +15,10 @@ jobs:
             - v1-rails-demo-{{ checksum "Gemfile.lock" }}
             - v1-rails-demo
 
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+          
       - run: bundle install --path vendor/bundle
 
       - save_cache:
