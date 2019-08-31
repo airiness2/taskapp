@@ -10,15 +10,11 @@ RSpec.feature "タスク管理機能", type: :feature do
     FactoryBot.create(:label)
     FactoryBot.create(:second_label)
 
-#    FactoryBot.create(:task)
-#    FactoryBot.create(:second_task)
-
     visit new_session_path
 
     fill_in 'session_email', with: 'test1@example.com'
     fill_in 'session_password', with: 'password'
     click_on 'ログイン'
-
   end
 
   # scenario（itのalias）の中に、確認したい各項目のテストの処理を書きます。
@@ -50,7 +46,6 @@ RSpec.feature "タスク管理機能", type: :feature do
     click_link("詳細", :match => :first)
 
     expect(page).to have_content 'task_detail_04'
-
   end
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
@@ -64,7 +59,7 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     visit tasks_path
 
-    expect(page).to have_text 'test_task_04 task_detail_04 2021/11/25 未着手 低 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 未着手 中 詳細 編集 削除'
+    expect(page).to have_text '未 test1 task_detail_04 2021/11/25 未着手 低 詳細 編集 削除 未 test1 testtesttest 2017/10/06 未着手 中 詳細 編集 削除'
   end
 
 
@@ -79,7 +74,7 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     click_on '終了期限'
 
-    expect(page).to have_text 'test_task_05 task_detail_05 2020/10/06 未着手 低 詳細 編集 削除 test_task_01 testtesttest 2017/10/06 未着手 中 詳細 編集 削除'
+    expect(page).to have_text '未 test1 task_detail_05 2020/10/06 未着手 低 詳細 編集 削除 未 test1 testtesttest 2017/10/06 未着手 中 詳細 編集 削除'
   end
 
   scenario "タスク名で検索されるかのテスト" do
@@ -117,8 +112,7 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     click_on '優先度'
 
-    expect(page).to have_text 'test_task_01 testtesttest 2017/10/06 未着手 中 詳細 編集 削除 test_task_06 task_detail_06 2021/11/25 未着手 低 詳細 編集 削除'
-
+    expect(page).to have_text '未 test1 testtesttest 2017/10/06 未着手 中 詳細 編集 削除 未 test1 task_detail_06 2021/11/25 未着手 低 詳細 編集 削除'
   end
 
   scenario "ページネートが動作するかのテスト" do
@@ -150,7 +144,6 @@ RSpec.feature "タスク管理機能", type: :feature do
     click_link("詳細", :match => :first)
 
     expect(page).to have_content '仕事'
-
   end
 
   scenario "ラベルで検索されるかのテスト" do
@@ -169,5 +162,4 @@ RSpec.feature "タスク管理機能", type: :feature do
     click_on '検索'
     expect(page).to have_content 'test_task_05'
   end
-
 end
