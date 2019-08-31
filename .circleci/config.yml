@@ -37,4 +37,6 @@ jobs:
             bundle exec rails db:seed
             bundle exec rails db:schema:load
 
+      - run: bundle exec rubocop
+      
       - run: bundle exec rspec
