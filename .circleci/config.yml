@@ -32,8 +32,9 @@ jobs:
 
       - run:
           command: |
-            bundle exec rake db:create
-            bundle exec rake db:seed
-            bundle exec rake db:schema:load
+            bundle exec rails db:create
+            bundle exec rails db:migrate
+            bundle exec rails db:seed
+            bundle exec rails db:schema:load
 
       - run: bundle exec rspec
