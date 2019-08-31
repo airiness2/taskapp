@@ -6,7 +6,13 @@ jobs:
       - image: circleci/ruby:2.6.3
         environment:
           RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
       - image: circleci/postgres:11.3
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle-test_test
+          
     steps:
       - checkout
 
@@ -15,6 +21,8 @@ jobs:
             - v1-rails-demo-{{ checksum "Gemfile.lock" }}
             - v1-rails-demo
           
+      - run: sudo apt install -y postgresql-client || true
+      
       - run: bundle install --path vendor/bundle
 
       - save_cache:
