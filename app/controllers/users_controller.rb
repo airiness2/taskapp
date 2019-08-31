@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     if logged_in?
       redirect_to tasks_path
@@ -29,7 +28,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                    :password_confirmation, :image, group_ids:[])
+                                 :password_confirmation, :image, group_ids: [])
   end
-
 end

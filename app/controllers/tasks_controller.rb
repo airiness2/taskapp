@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   before_action :sign_in_user
@@ -30,13 +29,12 @@ class TasksController < ApplicationController
   end
 
   def show
-    if @task.reads.find_by(user_id: current_user.id) == nil
+    if @task.reads.find_by(user_id: current_user.id).nil?
       @task.reads.create(user_id: current_user.id, flg: true, task_id: @task.id)
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @task.update(task_params)
@@ -69,7 +67,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :detail, :endtime, :status, :priority, :user_id, :read, label_ids:[], files: [])
+    params.require(:task).permit(:name, :detail, :endtime, :status, :priority, :user_id, :read, label_ids: [], files: [])
   end
 
   def set_task
@@ -79,5 +77,4 @@ class TasksController < ApplicationController
   def sign_in_user
     redirect_to new_session_path unless logged_in?
   end
-
 end

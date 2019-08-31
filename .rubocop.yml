@@ -1,0 +1,27 @@
+inherit_from: .rubocop_todo.yml
+ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/GuardClause:
+  MinBodyLength: 5
+
+Style/ExpandPathArguments:
+  Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/MixinUsage:
+  Enabled: false
+
+Style/NumericLiterals:
+  MinDigits: 20
+
+Style/RedundantBegin:
+  Enabled: false
+
+Style/StderrPuts:
+  Enabled: false
