@@ -1,22 +1,31 @@
 version: 2
 jobs:
-  one:
+  build:
+    working_directory: ~/circleci-demo-ruby-rails
     docker:
       - image: circleci/ruby:2.6.3
+        environment:
+          RAILS_ENV: test
+      - image: circleci/postgres:11.3
     steps:
       - checkout
-      - run: echo "A first hello"
-      - run: sleep 25
-  two:
-    docker:
-      - image: circleci/ruby:2.6.3
-    steps:
-      - checkout
-      - run: echo "A more familiar hi"
-      - run: sleep 15
-workflows:
-  version: 2
-  one_and_two:
-    jobs:
-      - one
-      - two
+
+      - restore_cache:
+          keys:
+            - v1-rails-demo-{{ checksum "Gemfile.lock" }}
+            - v1-rails-demo
+
+      - run: bundle install --path vendor/bundle
+
+      - save_cache:
+          key: v1-rails-demo-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - run:
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:seed
+            bundle exec rake db:schema:load
+
+      - run: bundle exec rspec
