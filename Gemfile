@@ -63,3 +63,5 @@ gem 'rmagick'
 gem 'simple_calendar'
 
 gem "chartkick"
+
+gem 'therubyracer', platforms: :ruby
