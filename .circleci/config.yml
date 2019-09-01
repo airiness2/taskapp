@@ -1,42 +1,51 @@
 version: 2
 jobs:
-  build:
-    working_directory: ~/circleci-demo-ruby-rails
-    docker:
-      - image: circleci/ruby:2.6.3
-        environment:
-          RAILS_ENV: test
-          PGHOST: 127.0.0.1
-          PGUSER: root
-      - image: circleci/postgres:11.3
-        environment:
-          POSTGRES_USER: root
-          POSTGRES_DB: circle-test_test
-          
-    steps:
-      - checkout
+  deploy_job:
+    build:
+      working_directory: ~/circleci-demo-ruby-rails
+      docker:
+        - image: circleci/ruby:2.6.3
+          environment:
+            RAILS_ENV: test
+            PGHOST: 127.0.0.1
+            PGUSER: root
+        - image: circleci/postgres:11.3
+          environment:
+            POSTGRES_USER: root
+            POSTGRES_DB: circle-test_test
+      steps:
+        - checkout
 
-      - restore_cache:
-          keys:
-            - v1-rails-demo-{{ checksum "Gemfile.lock" }}
-            - v1-rails-demo
-          
-      - run: sudo apt install -y postgresql-client || true
-      
-      - run: bundle install --path vendor/bundle
+        - restore_cache:
+            keys:
+              - v1-rails-demo-{{ checksum "Gemfile.lock" }}
+              - v1-rails-demo
 
-      - save_cache:
-          key: v1-rails-demo-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
+        - run: sudo apt install -y postgresql-client || true
 
-      - run:
-          command: |
-            bundle exec rails db:create
-            bundle exec rails db:migrate
-            bundle exec rails db:seed
-            bundle exec rails db:schema:load
+        - run: bundle install --path vendor/bundle
 
-      - run: bundle exec rubocop
-      
-      - run: bundle exec rspec
+        - save_cache:
+            key: v1-rails-demo-{{ checksum "Gemfile.lock" }}
+            paths:
+              - vendor/bundle
+
+        - run:
+            command: |
+              bundle exec rake db:create
+              bundle exec rails db:migrate
+              bundle exec rake db:seed
+              bundle exec rake db:schema:load
+
+        - run: bundle exec rubocop
+
+        - run: bundle exec rspec
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy_job:
+        filters:
+          branches:
+            only: issues/
