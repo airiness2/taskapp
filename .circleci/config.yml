@@ -1,6 +1,9 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        -/issues*/
     working_directory: ~/circleci-demo-ruby-rails
     docker:
       - image: circleci/ruby:2.6.3
@@ -37,5 +40,5 @@ jobs:
             bundle exec rake db:schema:load
 
       - run: bundle exec rubocop
-      
+
       - run: bundle exec rspec
