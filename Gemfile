@@ -25,6 +25,8 @@ group :development, :test do
 
   gem 'pry-byebug'
   gem 'pry-rails'
+
+  gem 'rubocop', require: false
 end
 
 group :development do
@@ -36,7 +38,6 @@ group :development do
 
   gem 'letter_opener_web'
 
-  gem 'rubocop', require: false
 end
 
 group :test do
