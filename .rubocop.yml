@@ -26,3 +26,5 @@ Style/RedundantBegin:
 Style/StderrPuts:
   Enabled: false
 
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false

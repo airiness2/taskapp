@@ -107,7 +107,3 @@ ActiveRecord::Schema.define(version: 2019_08_23_112011) do
   add_foreign_key "groups", "groupings"
   add_foreign_key "labels", "users"
 end
-
-
-
-
