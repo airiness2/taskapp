@@ -15,13 +15,6 @@ jobs:
           POSTGRES_USER: root
           POSTGRES_DB: circle-test_test
     steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-            - v1-rails-demo-{{ checksum "Gemfile.lock" }}
-            - v1-rails-demo
-
       - run: sudo apt install -y postgresql-client || true
 
       - run: bundle install --path vendor/bundle
