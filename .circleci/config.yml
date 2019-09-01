@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     branches:
-      only: issues/#59
+      only: - /issues¥/*/
     working_directory: ~/circleci-demo-ruby-rails
     docker:
       - image: circleci/ruby:2.6.3
@@ -15,6 +15,13 @@ jobs:
           POSTGRES_USER: root
           POSTGRES_DB: circle-test_test
     steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-rails-demo-{{ checksum "Gemfile.lock" }}
+            - v1-rails-demo
+
       - run: sudo apt install -y postgresql-client || true
 
       - run: bundle install --path vendor/bundle
