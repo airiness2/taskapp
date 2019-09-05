@@ -67,7 +67,6 @@ gem 'simple_calendar'
 
 gem "chartkick"
 
-#gem 'therubyracer', platforms: :ruby
 gem 'mini_racer', platforms: :ruby
 
 gem "bugsnag", "~> 6.12"
