@@ -3,7 +3,7 @@ jobs:
   build:
     branches:
       only: 
-        - /issues*/
+        - /issues.+/
     working_directory: ~/circleci-demo-ruby-rails
     docker:
       - image: circleci/ruby:2.6.3
@@ -14,7 +14,7 @@ jobs:
       - image: circleci/postgres:11.3
         environment:
           POSTGRES_USER: root
-          POSTGRES_DB: circle-test_test
+          POSTGRES_DB: taskapp_test
     steps:
       - checkout
 

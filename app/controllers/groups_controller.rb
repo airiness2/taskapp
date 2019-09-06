@@ -1,5 +1,4 @@
 class GroupsController < ApplicationController
-
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   before_action :edit_group, only: [:edit, :update, :destroy]
   before_action :sign_in_user
@@ -36,8 +35,7 @@ class GroupsController < ApplicationController
     @tasks = @tasks.page(params[:page]).per(10)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @group.update(group_params)
@@ -60,7 +58,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :info, :owner_id, user_ids:[])
+    params.require(:group).permit(:name, :info, :owner_id, user_ids: [])
   end
 
   def set_group
@@ -82,5 +80,4 @@ class GroupsController < ApplicationController
       redirect_to groups_path, notice: '詳細画面はグループメンバーのみ参照できます'
     end
   end
-
 end

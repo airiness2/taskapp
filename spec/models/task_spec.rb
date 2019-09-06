@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-
   before do
     @user = User.create(name: 'testuser1', email: "test@example.com", password: "hogehoge")
   end

@@ -1,9 +1,6 @@
-# このrequireで、Capybaraなどの、Feature Specに必要な機能を使用可能な状態にしています
 require 'rails_helper'
 
-# このRSpec.featureの右側に、「タスク管理機能」のように、テスト項目の名称を書きます（do ~ endでグループ化されています）
 RSpec.feature "タスク管理機能", type: :feature do
-
   background do
     FactoryBot.create(:user)
     FactoryBot.create(:second_user)
@@ -17,7 +14,6 @@ RSpec.feature "タスク管理機能", type: :feature do
     click_on 'ログイン'
   end
 
-  # scenario（itのalias）の中に、確認したい各項目のテストの処理を書きます。
   scenario "タスク一覧のテスト" do
     visit tasks_path
 
@@ -38,7 +34,7 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスク詳細のテスト" do
     visit new_task_path
 
-    fill_in 'task_name', with: 'test_task_04',  match: :first
+    fill_in 'task_name', with: 'test_task_04', match: :first
     fill_in 'task_detail', with: 'task_detail_04', match: :first
 
     click_on '登録する'
@@ -61,7 +57,6 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     expect(page).to have_text '未 test1 task_detail_04 2021/11/25 未着手 低 詳細 編集 削除 未 test1 testtesttest 2017/10/06 未着手 中 詳細 編集 削除'
   end
-
 
   scenario "終了期限でソートされるかのテスト" do
     visit new_task_path
@@ -130,11 +125,10 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(page).to have_text 'test_task_9'
   end
 
-
   scenario "ラベルが設定されるかのテスト" do
     visit new_task_path
 
-    fill_in 'task_name', with: 'test_task_04',  match: :first
+    fill_in 'task_name', with: 'test_task_04', match: :first
     fill_in 'task_detail', with: 'task_detail_04', match: :first
 
     check 'task_label_ids_19'

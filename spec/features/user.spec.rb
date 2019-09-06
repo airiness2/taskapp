@@ -1,13 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature "ユーザ管理機能", type: :feature do
-
   background do
     FactoryBot.create(:user)
     FactoryBot.create(:second_user)
   end
-
-  # scenario（itのalias）の中に、確認したい各項目のテストの処理を書きます。
 
   scenario "ユーザ追加のテスト" do
     visit new_user_path
@@ -22,37 +19,35 @@ RSpec.feature "ユーザ管理機能", type: :feature do
   end
 
   scenario "ログイン機能のテスト" do
-      visit new_session_path
+    visit new_session_path
 
-      fill_in 'session_email', with: 'test1@example.com'
-      fill_in 'session_password', with: 'password'
-      click_on 'ログイン'
+    fill_in 'session_email', with: 'test1@example.com'
+    fill_in 'session_password', with: 'password'
+    click_on 'ログイン'
 
-      expect(page).to have_content 'test1'
+    expect(page).to have_content 'test1'
   end
 
   scenario "他のユーザのマイページが開けないテスト" do
-      visit new_session_path
+    visit new_session_path
 
-      fill_in 'session_email', with: 'test1@example.com'
-      fill_in 'session_password', with: 'password'
-      click_on 'ログイン'
+    fill_in 'session_email', with: 'test1@example.com'
+    fill_in 'session_password', with: 'password'
+    click_on 'ログイン'
 
-      visit user_path(7)
-      expect(page).to_not have_content 'test2'
+    visit user_path(7)
+    expect(page).to_not have_content 'test2'
   end
 
   scenario "ログインしている時はユーザ登録画面にいけないテスト" do
-      visit new_session_path
+    visit new_session_path
 
-      fill_in 'session_email', with: 'test1@example.com'
-      fill_in 'session_password', with: 'password'
-      click_on 'ログイン'
+    fill_in 'session_email', with: 'test1@example.com'
+    fill_in 'session_password', with: 'password'
+    click_on 'ログイン'
 
-      visit new_user_path
-      
-      expect(page).to_not have_content 'アカウントを作成する'
+    visit new_user_path
+
+    expect(page).to_not have_content 'アカウントを作成する'
   end
-
-
 end
