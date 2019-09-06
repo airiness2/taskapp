@@ -8,8 +8,8 @@ Rails.application.routes.draw do
       delete :delete_file_attachment
     end
   end
-  resources :users, only:[:new, :create, :show]
-  resources :sessions, only:[:new, :create, :destroy ]
+  resources :users, only: [:new, :create, :show]
+  resources :sessions, only: [:new, :create, :destroy]
   resources :groups
 
   namespace :admin do
@@ -21,5 +21,4 @@ Rails.application.routes.draw do
   get '/calendar', to: 'tasks#calendar'
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-
 end

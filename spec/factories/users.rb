@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :user do
     name { "test1" }
     email { "test1@example.com" }
@@ -20,5 +19,4 @@ FactoryBot.define do
       create(:second_task, user: second_user)
     end
   end
-
 end

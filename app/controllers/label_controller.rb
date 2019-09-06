@@ -1,5 +1,4 @@
 class LabelController < ApplicationController
-
   before_action :set_label, only: [:edit, :update, :destroy]
 
   def new
@@ -8,7 +7,7 @@ class LabelController < ApplicationController
 
   def index
     @labels = Label.where(user_id: current_user.id)
-    @labelings = Labeling.joins(:label).where(labels: {user_id: nil}).group(:name).count
+    @labelings = Labeling.joins(:label).where(labels: { user_id: nil }).group(:name).count
   end
 
   def create
@@ -21,8 +20,7 @@ class LabelController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @label.update(label_params)
@@ -36,7 +34,6 @@ class LabelController < ApplicationController
     @label.destroy
     redirect_to label_index_path, notice: "ラベルを削除しました！"
   end
-
 
   private
 
